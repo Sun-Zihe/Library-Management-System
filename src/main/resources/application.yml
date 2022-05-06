@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud_diary?useSSL=false&useUnicode=true&characterEncoding=UTF8&serverTimeZone=GTM+8
+    username: root
+    password: 5211314szh
+
+mybatis:
+  mapper-locations: com/fc/mapper/*.xml
+  type-aliases-package: com.fc.entity
+  configuration:
+    cache-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    use-generated-keys: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    map-underscore-to-camel-case: true
+
+pagehelper:
+  reasonable: true
+  auto-dialect: true
