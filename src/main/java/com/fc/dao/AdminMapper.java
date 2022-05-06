@@ -4,7 +4,9 @@ import com.fc.entity.Admin;
 import com.fc.entity.AdminExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public interface AdminMapper {
     long countByExample(AdminExample example);
 
@@ -27,4 +29,6 @@ public interface AdminMapper {
     int updateByPrimaryKeySelective(Admin record);
 
     int updateByPrimaryKey(Admin record);
+
+    Admin queryUserByNameAndPassword(@Param("username") String username,@Param("password") String password);
 }

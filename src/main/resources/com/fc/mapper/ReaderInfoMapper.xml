@@ -195,6 +195,9 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <select id="queryUserInfoByNameAndPassword" resultType="com.fc.entity.ReaderInfo">
+    select * from reader_info where username=#{username} and password=#{password}
+  </select>
   <update id="updateByExampleSelective" parameterType="map">
     update reader_info
     <set>

@@ -141,7 +141,10 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+    <select id="queryUserByNameAndPassword" resultType="com.fc.entity.Admin">
+      select * from admin where username=#{username} and password=#{password}
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
     update admin
     <set>
       <if test="record.id != null">

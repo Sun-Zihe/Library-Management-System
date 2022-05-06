@@ -75,7 +75,7 @@
         </div>
     </div>
 </div>
-<script src="${pageContext.request.contextPath}/META-INF/resources/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script type="text/javascript">
     getCode();
     /**

@@ -4,7 +4,9 @@ import com.fc.entity.ReaderInfo;
 import com.fc.entity.ReaderInfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public interface ReaderInfoMapper {
     long countByExample(ReaderInfoExample example);
 
@@ -27,4 +29,6 @@ public interface ReaderInfoMapper {
     int updateByPrimaryKeySelective(ReaderInfo record);
 
     int updateByPrimaryKey(ReaderInfo record);
+
+    ReaderInfo queryUserInfoByNameAndPassword(String username, String password);
 }
