@@ -85,4 +85,6 @@ public class LoginController {
         session.invalidate();//注销
         return "/login";
     }
+
+
 }

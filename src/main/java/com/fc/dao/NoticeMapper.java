@@ -4,7 +4,9 @@ import com.fc.entity.Notice;
 import com.fc.entity.NoticeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public interface NoticeMapper {
     long countByExample(NoticeExample example);
 
@@ -27,4 +29,6 @@ public interface NoticeMapper {
     int updateByPrimaryKeySelective(Notice record);
 
     int updateByPrimaryKey(Notice record);
+
+    List<Notice> queryNoticeAll(Notice notice);
 }

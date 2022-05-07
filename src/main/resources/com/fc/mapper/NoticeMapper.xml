@@ -148,6 +148,10 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <select id="queryNoticeAll" resultType="com.fc.entity.Notice">
+    select * from notice
+    order by createDate desc
+  </select>
   <update id="updateByExampleSelective" parameterType="map">
     update notice
     <set>
