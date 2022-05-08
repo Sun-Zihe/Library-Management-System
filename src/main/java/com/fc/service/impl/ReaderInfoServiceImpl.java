@@ -28,6 +28,11 @@ public class ReaderInfoServiceImpl implements ReaderInfoService {
     public PageInfo<ReaderInfo> queryAllReaderInfo(ReaderInfo readerInfo, Integer pageNum, Integer limit) {
         PageHelper.startPage(pageNum,limit);
         List<ReaderInfo> readerInfoList = readerInfoMapper.queryAllReaderInfo(readerInfo);
+        for (ReaderInfo S:
+                readerInfoList
+             ) {
+            System.out.println(S);
+        }
         return new PageInfo<>(readerInfoList);
     }
 }

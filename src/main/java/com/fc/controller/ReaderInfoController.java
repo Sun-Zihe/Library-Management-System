@@ -29,11 +29,22 @@ public class ReaderInfoController {
         return "reader/readerAdd";
     }
 
+    //查询所有数据
     @RequestMapping("/readerAll")
     @ResponseBody
     public DataInfoVO readerAll(ReaderInfo readerInfo, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "15") Integer limit){
         PageInfo<ReaderInfo> pageInfo = readerInfoService.queryAllReaderInfo(readerInfo,pageNum,limit);
+
+        System.out.println("-----------------");
+        for (ReaderInfo S:
+                pageInfo.getList()
+        ) {
+            System.out.println(S);
+        }
+
         return new DataInfoVO(0,"成功",pageInfo.getList(),pageInfo.getTotal());//总条数getTotal，数据封装成list,以便加载分页显示,由于加了ResponseBody,就会返回一个字符串
     }
+
+    //添加数据
 
 }
