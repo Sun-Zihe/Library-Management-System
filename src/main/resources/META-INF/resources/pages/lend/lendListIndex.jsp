@@ -61,7 +61,7 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
-            {{# if(d.backDate==null){ }}
+            {{# if(d.backdate==null){ }}
                 <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">异常还书</a>
                 <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
             {{# }else{ }}
@@ -92,21 +92,21 @@
                 //{field: 'id', width: 100, title: 'ID', sort: true},
                 {templet: '<div><a href="javascript:void(0)" style="color:#00b7ee" lay-event="bookInfoEvent">{{d.bookInfo.name}}</a></div>',
                     width: 100, title: '图书名称'},
-                {templet: '<div>{{d.readerInfo.readerNumber}}</div>', width: 120, title: '借书卡'},
-                {templet: '<div><a href="javascript:void(0)" style="color:#00b7ee" lay-event="readerInfoEvent">{{d.readerInfo.realName}}</a></div>',
+                {templet: '<div>{{d.readerInfo.readernumber}}</div>', width: 120, title: '借书卡'},
+                {templet: '<div><a href="javascript:void(0)" style="color:#00b7ee" lay-event="readerInfoEvent">{{d.readerInfo.realname}}</a></div>',
                     width: 100, title: '借阅人'},
                 // {templet: '<div>{{d.reader.name}}</div>', width: 80, title: '借阅人'},
-                {templet:"<div>{{layui.util.toDateString(d.lendDate,'yyyy-MM-dd HH:mm:ss')}}</div>", width: 160, title: '借阅时间'},
-                {field: 'backDate', width: 160, title: '还书时间'},
+                {templet:"<div>{{layui.util.toDateString(d.lenddate,'yyyy-MM-dd HH:mm:ss')}}</div>", width: 160, title: '借阅时间'},
+                {field: 'backdate', width: 160, title: '还书时间'},
                 {title:"还书类型",minWidth: 120,templet:function(res){
-                      if(res.backType=='0'){
+                      if(res.backtype=='0'){
                           return '<span class="layui-badge layui-bg-green">正常还书</span>'
-                      }else if(res.backType=='1'){
+                      }else if(res.backtype=='1'){
                           return '<span class="layui-badge layui-bg-gray">延迟还书</span>'
 
-                      }else if(res.backType=='2') {
+                      }else if(res.backtype=='2') {
                           return '<span class="layui-badge layui-bg-yellow">破损还书</span>'
-                      }else if(res.backType=='3'){
+                      }else if(res.backtype=='3'){
                           return '<span class="layui-badge layui-bg-green">丢失图书</span>'
                       }else{
                           return '<span class="layui-badge layui-bg-red">在借中</span>'
@@ -125,8 +125,8 @@
         var $ = layui.$, active = {
             reload: function(){
                 var name = $('#name').val();
-                var readerNumber = $('#readerNumber').val();
-                var backType = $('#backType').val();
+                var readernumber = $('#readernumber').val();
+                var backtype = $('#backtype').val();
                 var status = $('#status').val();
                 //执行重载
                 table.reload('testReload', {
@@ -135,8 +135,8 @@
                     }
                     ,where: {
                         name: name,
-                        readerNumber:readerNumber,
-                        backType:backType,
+                        readernumber:readernumber,
+                        backtype:backtype,
                         status:status
                     }
                 }, 'data');

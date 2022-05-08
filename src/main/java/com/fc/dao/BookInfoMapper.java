@@ -4,7 +4,9 @@ import com.fc.entity.BookInfo;
 import com.fc.entity.BookInfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public interface BookInfoMapper {
     long countByExample(BookInfoExample example);
 
@@ -27,4 +29,6 @@ public interface BookInfoMapper {
     int updateByPrimaryKeySelective(BookInfo record);
 
     int updateByPrimaryKey(BookInfo record);
+
+    List<BookInfo> queryBookInfoAll(BookInfo bookInfo);
 }

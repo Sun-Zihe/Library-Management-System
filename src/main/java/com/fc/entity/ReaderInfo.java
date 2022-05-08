@@ -37,6 +37,23 @@ public class ReaderInfo {
         return username;
     }
 
+    @Override
+    public String toString() {
+        return "ReaderInfo{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", realname='" + realname + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthday=" + birthday +
+                ", address='" + address + '\'' +
+                ", tel='" + tel + '\'' +
+                ", email='" + email + '\'' +
+                ", registerdate=" + registerdate +
+                ", readernumber='" + readernumber + '\'' +
+                '}';
+    }
+
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
     }

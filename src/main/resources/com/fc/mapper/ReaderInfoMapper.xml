@@ -198,7 +198,24 @@
   <select id="queryUserInfoByNameAndPassword" resultType="com.fc.entity.ReaderInfo">
     select * from reader_info where username=#{username} and password=#{password}
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+    <select id="queryAllReaderInfo" parameterType="com.fc.entity.ReaderInfo" resultType="com.fc.entity.ReaderInfo">
+      select * from reader_info
+      <where>
+        <!--读者图书卡号-->
+        <if test="readernumber!=null">
+          and readerNumber like '%${readernumber}%'
+        </if>
+        <!--用户名-->
+        <if test="username!=null">
+          and username like '%${username}%'
+        </if>
+        <!--电话号-->
+        <if test="tel!=null">
+          and tel like '%${tel}%'
+        </if>
+      </where>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
     update reader_info
     <set>
       <if test="record.id != null">

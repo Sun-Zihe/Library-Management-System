@@ -31,4 +31,6 @@ public interface ReaderInfoMapper {
     int updateByPrimaryKey(ReaderInfo record);
 
     ReaderInfo queryUserInfoByNameAndPassword(String username, String password);
+
+    List<ReaderInfo> queryAllReaderInfo(ReaderInfo readerInfo);
 }

@@ -4,7 +4,9 @@ import com.fc.entity.LendList;
 import com.fc.entity.LendListExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public interface LendListMapper {
     long countByExample(LendListExample example);
 
@@ -27,4 +29,11 @@ public interface LendListMapper {
     int updateByPrimaryKeySelective(LendList record);
 
     int updateByPrimaryKey(LendList record);
+
+
+     // 查询所有借阅记录
+    List<LendList> queryLendListAll(LendList lendList);
+
+    //正常还书
+    void updateLendListSubmit(LendList lend);
 }

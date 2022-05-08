@@ -195,7 +195,21 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+    <select id="queryBookInfoAll" resultType="com.fc.entity.BookInfo">
+      select book_info.*,type_info.name as type_name
+      from book_info,type_info
+      where type_info.id = book_info.type_id
+      <if test="name!=null">
+        and book_info.name like '%${name}%'
+      </if>
+      <if test="isbn!=null">
+        and book_info.isbn like '%${isbn}%'
+      </if>
+      <if test="typeId!=null">
+        and  book_info.type_id like '%${typeId}%'
+      </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
     update book_info
     <set>
       <if test="record.id != null">
