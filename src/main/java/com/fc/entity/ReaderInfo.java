@@ -23,7 +23,13 @@ public class ReaderInfo {
 
     private Date registerdate;
 
-    private String readernumber;
+    private String readerNumber;
+
+    private ReaderInfo readerInfo;
+
+    private BookInfo bookInfo;
+
+    private Integer backtype;
 
     public Integer getId() {
         return id;
@@ -106,10 +112,22 @@ public class ReaderInfo {
     }
 
     public String getReadernumber() {
-        return readernumber;
+        return readerNumber;
     }
 
     public void setReadernumber(String readernumber) {
-        this.readernumber = readernumber == null ? null : readernumber.trim();
+        this.readerNumber = readernumber == null ? null : readernumber.trim();
+    }
+
+    public void setReaderInfo(ReaderInfo readerInfo) {
+        this.readerInfo = readerInfo;
+    }
+
+    public void setBookInfo(BookInfo bookInfo) {
+        this.bookInfo = bookInfo;
+    }
+
+    public void setBacktype(Integer backType) {
+        this.backtype = backtype;
     }
 }

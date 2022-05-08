@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, password, realName, sex, birthday, address, tel, email, registerDate, 
+    id, username, password, realName, sex, birthday, address, tel, email, registerDate,
     readerNumber
   </sql>
   <select id="selectByExample" parameterType="com.fc.entity.ReaderInfoExample" resultMap="BaseResultMap">
@@ -91,7 +91,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from reader_info
     where id = #{id,jdbcType=INTEGER}
@@ -107,13 +107,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.fc.entity.ReaderInfo">
-    insert into reader_info (id, username, password, 
-      realName, sex, birthday, 
-      address, tel, email, 
+    insert into reader_info (id, username, password,
+      realName, sex, birthday,
+      address, tel, email,
       registerDate, readerNumber)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{realname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
-      #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{realname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE},
+      #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
       #{registerdate,jdbcType=TIMESTAMP}, #{readernumber,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fc.entity.ReaderInfo">
@@ -197,6 +197,24 @@
   </select>
   <select id="queryUserInfoByNameAndPassword" resultType="com.fc.entity.ReaderInfo">
     select * from reader_info where username=#{username} and password=#{password}
+  </select>
+  <select id="queryAllReaderInfo" resultType="com.fc.entity.ReaderInfo" parameterType="com.fc.entity.ReaderInfo">
+    select * from reader_info
+    <where>
+      <!--读者图书卡号-->
+      <if test="readerNumber!=null">
+        and readerNumber like '%${readerNumber}%'
+      </if>
+      <!--用户名-->
+      <if test="username!=null">
+        and username like '%${username}%'
+      </if>
+      <!--电话号-->
+      <if test="tel!=null">
+        and tel like '%${tel}%'
+      </if>
+    </where>
+
   </select>
   <update id="updateByExampleSelective" parameterType="map">
     update reader_info
