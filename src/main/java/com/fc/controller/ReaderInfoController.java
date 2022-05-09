@@ -1,5 +1,6 @@
 package com.fc.controller;
 
+import com.fc.entity.Admin;
 import com.fc.entity.BookInfo;
 import com.fc.entity.ReaderInfo;
 import com.fc.service.ReaderInfoService;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,7 +54,7 @@ public class ReaderInfoController {
     public DataInfoVO addReaderSubmit(@RequestBody ReaderInfo readerInfo) {
         readerInfo.setPassword("123456");//设置默认密码
         readerInfoService.addReaderInfoSubmit(readerInfo);
-        return new DataInfoVO();
+        return new DataInfoVO(0, "添加成功", null, null);
     }
 
     //根据查询读者信息
@@ -67,7 +70,7 @@ public class ReaderInfoController {
     @ResponseBody
     public DataInfoVO updateReaderSubmit(@RequestBody ReaderInfo readerInfo) {
         readerInfoService.updateReaderInfoSubmit(readerInfo);
-        return new DataInfoVO();
+        return new DataInfoVO(0, "修改成功", null, null);
     }
 
     //删除
@@ -76,7 +79,7 @@ public class ReaderInfoController {
     public DataInfoVO deleteReader(String ids) {
         List<String> list= Arrays.asList(ids.split(","));
         readerInfoService.deleteReaderInfoByIds(list);
-        return new DataInfoVO();
+        return new DataInfoVO(0, "删除成功", null, null);
     }
 
 }

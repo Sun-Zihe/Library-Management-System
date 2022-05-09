@@ -23,7 +23,7 @@ public class ReaderInfoServiceImpl implements ReaderInfoService {
         return readerInfoMapper.queryUserInfoByNameAndPassword(username, password);
     }
 
-
+    //查询所有读者信息
     @Override
     public PageInfo<ReaderInfo> queryAllReaderInfo(ReaderInfo readerInfo, Integer pageNum, Integer limit) {
         PageHelper.startPage(pageNum,limit);
@@ -36,21 +36,25 @@ public class ReaderInfoServiceImpl implements ReaderInfoService {
         return new PageInfo<>(readerInfoList);
     }
 
+    //添加
     @Override
     public void addReaderInfoSubmit(ReaderInfo readerInfo) {
         readerInfoMapper.insert(readerInfo);
     }
 
+    //Id查询读者信息
     @Override
     public ReaderInfo queryReaderInfoById(Integer id) {
         return readerInfoMapper.selectByPrimaryKey(id);
     }
 
+    //修改
     @Override
     public void updateReaderInfoSubmit(ReaderInfo readerInfo) {
         readerInfoMapper.updateByPrimaryKeySelective(readerInfo);
     }
 
+    //删除
     @Override
     public void deleteReaderInfoByIds(List<String> ids) {
         for (String id : ids){
