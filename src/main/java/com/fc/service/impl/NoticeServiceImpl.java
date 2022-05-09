@@ -25,4 +25,9 @@ public class NoticeServiceImpl implements NoticeService {
         System.out.println(noticeList);
         return new PageInfo<>(noticeList);
     }
+
+    @Override
+    public void addNotice(Notice notice) {
+        noticeMapper.insert(notice);
+    }
 }
