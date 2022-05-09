@@ -35,4 +35,9 @@ public class ReaderInfoServiceImpl implements ReaderInfoService {
         }
         return new PageInfo<>(readerInfoList);
     }
+
+    @Override
+    public void addReaderInfoSubmit(ReaderInfo readerInfo) {
+        readerInfoMapper.insert(readerInfo);
+    }
 }

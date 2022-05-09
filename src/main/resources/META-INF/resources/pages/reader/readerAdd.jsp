@@ -22,7 +22,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label required">读者卡号</label>
         <div class="layui-input-block">
-            <input type="text" name="readerNumber" lay-verify="required" lay-reqtext="读者卡号不能为空" placeholder="请输入读者卡号" autocomplete="off" class="layui-input">
+            <input type="text" name="readernumber" lay-verify="required" lay-reqtext="读者卡号不能为空" placeholder="请输入读者卡号" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -35,7 +35,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label required">真实姓名</label>
         <div class="layui-input-block">
-            <input type="text" name="realName" lay-verify="required" lay-reqtext="真实姓名不能为空" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
+            <input type="text" name="realname" lay-verify="required" lay-reqtext="真实姓名不能为空" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
         </div>
     </div>
 

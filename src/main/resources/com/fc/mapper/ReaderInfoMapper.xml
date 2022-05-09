@@ -116,7 +116,7 @@
       #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
       #{registerdate,jdbcType=TIMESTAMP}, #{readernumber,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.fc.entity.ReaderInfo">
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fc.entity.ReaderInfo">
     insert into reader_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
