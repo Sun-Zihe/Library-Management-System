@@ -13,4 +13,9 @@ public interface ReaderInfoService {
     PageInfo<ReaderInfo> queryAllReaderInfo(ReaderInfo readerInfo, Integer pageNum, Integer limit);
 
     void addReaderInfoSubmit(ReaderInfo readerInfo);
+
+    ReaderInfo queryReaderInfoById(Integer id);
+
+    void updateReaderInfoSubmit(ReaderInfo readerInfo);
+
 }

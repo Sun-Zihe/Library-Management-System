@@ -7,6 +7,7 @@ import com.fc.vo.DataInfoVO;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -47,6 +48,22 @@ public class ReaderInfoController {
     public DataInfoVO addReaderSubmit(@RequestBody ReaderInfo readerInfo) {
         readerInfo.setPassword("123456");//设置默认密码
         readerInfoService.addReaderInfoSubmit(readerInfo);
+        return new DataInfoVO();
+    }
+
+    //根据查询读者信息
+    @GetMapping("queryReaderInfoById")
+    public String queryReaderInfoById(Integer id, Model model){
+        ReaderInfo readerInfo = readerInfoService.queryReaderInfoById(id);
+        model.addAttribute("info",readerInfo);
+        return "reader/updateReader";
+    }
+
+    //修改提交
+    @RequestMapping("updateReaderSubmit")
+    @ResponseBody
+    public DataInfoVO updateReaderSubmit(@RequestBody ReaderInfo readerInfo) {
+        readerInfoService.updateReaderInfoSubmit(readerInfo);
         return new DataInfoVO();
     }
 

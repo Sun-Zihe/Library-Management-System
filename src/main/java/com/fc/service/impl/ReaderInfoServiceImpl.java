@@ -40,4 +40,14 @@ public class ReaderInfoServiceImpl implements ReaderInfoService {
     public void addReaderInfoSubmit(ReaderInfo readerInfo) {
         readerInfoMapper.insert(readerInfo);
     }
+
+    @Override
+    public ReaderInfo queryReaderInfoById(Integer id) {
+        return readerInfoMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void updateReaderInfoSubmit(ReaderInfo readerInfo) {
+        readerInfoMapper.updateByPrimaryKeySelective(readerInfo);
+    }
 }
