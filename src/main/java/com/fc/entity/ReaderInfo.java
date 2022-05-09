@@ -55,26 +55,6 @@ public class ReaderInfo {
         this.password = password == null ? null : password.trim();
     }
 
-    @Override
-    public String toString() {
-        return "ReaderInfo{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", realname='" + realname + '\'' +
-                ", sex='" + sex + '\'' +
-                ", birthday=" + birthday +
-                ", address='" + address + '\'' +
-                ", tel='" + tel + '\'' +
-                ", email='" + email + '\'' +
-                ", registerdate=" + registerdate +
-                ", readernumber='" + readerNumber + '\'' +
-                ", readerInfo=" + readerInfo +
-                ", bookInfo=" + bookInfo +
-                ", backtype=" + backtype +
-                '}';
-    }
-
     public String getRealname() {
         return realname;
     }
@@ -150,4 +130,26 @@ public class ReaderInfo {
     public void setBacktype(Integer backType) {
         this.backtype = backtype;
     }
+
+    @Override
+    public String toString() {
+        return "ReaderInfo{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", realname='" + realname + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthday=" + birthday +
+                ", address='" + address + '\'' +
+                ", tel='" + tel + '\'' +
+                ", email='" + email + '\'' +
+                ", registerdate=" + registerdate +
+                ", readerNumber='" + readerNumber + '\'' +
+                ", readerInfo=" + readerInfo +
+                ", bookInfo=" + bookInfo +
+                ", backtype=" + backtype +
+                '}';
+    }
+
+
 }

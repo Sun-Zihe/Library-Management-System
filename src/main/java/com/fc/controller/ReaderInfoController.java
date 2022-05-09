@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.Data;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -51,8 +53,11 @@ public class ReaderInfoController {
 
     //添加数据
     @RequestMapping("/addReaderSubmit")
+    @ResponseBody
     public DataInfoVO addReaderSubmit(@RequestBody ReaderInfo readerInfo) {
+        readerInfo.setRegisterdate(new Date());
         readerInfo.setPassword("123456");//设置默认密码
+        System.out.println("---------------"+readerInfo);
         readerInfoService.addReaderInfoSubmit(readerInfo);
         return new DataInfoVO(0, "添加成功", null, null);
     }
