@@ -13,7 +13,7 @@ public interface ReaderInfoService {
     ReaderInfo queryUserInfoByNameAndPassword(String username, String password);
 
     //查询所有读者信息
-    PageInfo<ReaderInfo> queryAllReaderInfo(ReaderInfo readerInfo, Integer pageNum, Integer limit);
+    PageInfo<ReaderInfo> queryAllReaderInfo(ReaderInfo readerInfo, Integer page, Integer limit);
 
     //添加
     void addReaderInfoSubmit(ReaderInfo readerInfo);

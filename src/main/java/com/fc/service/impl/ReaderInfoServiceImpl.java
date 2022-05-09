@@ -25,8 +25,8 @@ public class ReaderInfoServiceImpl implements ReaderInfoService {
 
     //查询所有读者信息
     @Override
-    public PageInfo<ReaderInfo> queryAllReaderInfo(ReaderInfo readerInfo, Integer pageNum, Integer limit) {
-        PageHelper.startPage(pageNum,limit);
+    public PageInfo<ReaderInfo> queryAllReaderInfo(ReaderInfo readerInfo, Integer page, Integer limit) {
+        PageHelper.startPage(page,limit);
         List<ReaderInfo> readerInfoList = readerInfoMapper.queryAllReaderInfo(readerInfo);
         for (ReaderInfo S:
                 readerInfoList

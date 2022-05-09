@@ -150,6 +150,12 @@
   </select>
   <select id="queryNoticeAll" resultType="com.fc.entity.Notice">
     select * from notice
+    <where>
+      <!--公告主题-->
+      <if test="topic!=null">
+        and topic like '%${topic}%'
+      </if>
+    </where>
     order by createDate desc
   </select>
   <update id="updateByExampleSelective" parameterType="map">

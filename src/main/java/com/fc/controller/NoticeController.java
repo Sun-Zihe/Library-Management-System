@@ -32,8 +32,8 @@ public class NoticeController {
     //查询所有公告信息
     @RequestMapping("/noticeAll")
     @ResponseBody
-    public DataInfoVO noticeAll(Notice notice, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "15")Integer limit){
-        PageInfo<Notice> pageInfo = noticeService.queryAllNotice(notice, pageNum, limit);
+    public DataInfoVO noticeAll(Notice notice, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "15")Integer limit){
+        PageInfo<Notice> pageInfo = noticeService.queryAllNotice(notice, page, limit);
         return new DataInfoVO(0,"成功",pageInfo.getList(),pageInfo.getTotal());
     }
 
@@ -44,12 +44,16 @@ public class NoticeController {
     }
 
     //添加页面提交
-    @PostMapping("addNoticeSubmit")
+    @RequestMapping("addNoticeSubmit")
+    @ResponseBody
     public DataInfoVO addNoticeSubmit(Notice notice) {
         //主题和内容可以页面获取，作者和时间在后台自动获取
         notice.setAuthor("admin");//这里先暂且写admin
         notice.setCreatedate(new Date());
         noticeService.addNotice(notice);
+
+        System.out.println(11111111);
+
         return new DataInfoVO(0,"添加成功", null, null);
     }
 

@@ -23,7 +23,7 @@
 
         <div class="demoTable">
             <div class="layui-form-item layui-form ">
-                图书卡号：
+                读者卡号：
                 <div class="layui-inline">
                     <input class="layui-input" name="readernumber" id="readernumber" autocomplete="off">
                 </div>
@@ -94,7 +94,7 @@
 
         var $ = layui.$, active = {
             reload: function(){
-                var readerNumber = $('#readerNumber').val();
+                var readernumber = $('#readernumber').val();
                 var username = $('#username').val();
                 var tel = $('#tel').val();
                 console.log(name)
@@ -104,7 +104,7 @@
                         curr: 1 //重新从第 1 页开始
                     }
                     ,where: {
-                        readerNumber: readerNumber,
+                        readernumber: readernumber,
                         username:username,
                         tel:tel
                     }

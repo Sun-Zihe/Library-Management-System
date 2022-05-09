@@ -6,7 +6,7 @@ import com.github.pagehelper.PageInfo;
 import java.util.List;
 
 public interface NoticeService {
-    PageInfo<Notice> queryAllNotice(Notice notice,Integer pageNum,Integer limit);
+    PageInfo<Notice> queryAllNotice(Notice notice,Integer page,Integer limit);
 
     void addNotice(Notice notice);
 
