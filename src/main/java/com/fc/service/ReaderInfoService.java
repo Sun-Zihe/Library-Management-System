@@ -5,6 +5,8 @@ import com.fc.entity.ReaderInfo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public interface ReaderInfoService {
 
@@ -17,5 +19,7 @@ public interface ReaderInfoService {
     ReaderInfo queryReaderInfoById(Integer id);
 
     void updateReaderInfoSubmit(ReaderInfo readerInfo);
+
+    void deleteReaderInfoByIds(List<String> list);
 
 }

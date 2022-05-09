@@ -50,4 +50,11 @@ public class ReaderInfoServiceImpl implements ReaderInfoService {
     public void updateReaderInfoSubmit(ReaderInfo readerInfo) {
         readerInfoMapper.updateByPrimaryKeySelective(readerInfo);
     }
+
+    @Override
+    public void deleteReaderInfoByIds(List<String> ids) {
+        for (String id : ids){
+            readerInfoMapper.deleteByPrimaryKey(Integer.parseInt(id));
+        }
+    }
 }

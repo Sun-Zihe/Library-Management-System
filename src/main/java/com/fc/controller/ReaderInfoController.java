@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
 public class ReaderInfoController {
     @Autowired
@@ -64,6 +67,15 @@ public class ReaderInfoController {
     @ResponseBody
     public DataInfoVO updateReaderSubmit(@RequestBody ReaderInfo readerInfo) {
         readerInfoService.updateReaderInfoSubmit(readerInfo);
+        return new DataInfoVO();
+    }
+
+    //删除
+    @RequestMapping("deleteReader")
+    @ResponseBody
+    public DataInfoVO deleteReader(String ids) {
+        List<String> list= Arrays.asList(ids.split(","));
+        readerInfoService.deleteReaderInfoByIds(list);
         return new DataInfoVO();
     }
 
