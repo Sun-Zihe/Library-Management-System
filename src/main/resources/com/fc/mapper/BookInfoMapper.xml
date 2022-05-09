@@ -195,7 +195,14 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-    <select id="queryBookInfoAll" resultType="com.fc.entity.BookInfo">
+<!--  <resultMap id="queryBookAllMap" type="com.fc.entity.BookInfo" extends="BaseResultMap">-->
+<!--    <association property="typeInfo" javaType="com.fc.entity.TypeInfo">-->
+<!--      <id column="id" property="id"></id>-->
+<!--      <result column="type_name" property="name"></result>-->
+<!--    </association>-->
+<!--  </resultMap>-->
+<!--  resultMap="queryBookAllMap"-->
+    <select id="queryBookInfoAll" resultType="com.fc.entity.BookInfo" >
       select book_info.*,type_info.name as type_name
       from book_info,type_info
       where type_info.id = book_info.type_id
@@ -209,7 +216,18 @@
         and  book_info.type_id like '%${typeId}%'
       </if>
     </select>
-    <update id="updateByExampleSelective" parameterType="map">
+  <!--根据图书类型获取图书对应数量信息-->
+  <select id="getBookCountByType" resultType="com.fc.entity.BookInfo">
+    SELECT
+      count( book.id ) AS counts,
+      type.NAME
+    FROM
+      book_info book
+        LEFT JOIN type_info type ON type.id = book.type_id
+    GROUP BY
+      book.type_id
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
     update book_info
     <set>
       <if test="record.id != null">

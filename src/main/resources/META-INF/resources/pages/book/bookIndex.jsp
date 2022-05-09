@@ -95,10 +95,15 @@
                 //{field: 'id', width: 100, title: 'ID', sort: true},
                 {field: 'isbn', width: 100, title: '图书编号'},
                 {field: 'name', width: 100, title: '图书名称'},
-                {templet:'<div>{{d.typeInfo.name}}</div>',width:100,title:'图书类型'},
+
+                {templet:'<div>{{type_info.name}}</div>',width:100,title:'图书类型'},
                 {field: 'author', width: 80, title: '作者'},
+                {field: 'introduction', width: 120, title: '简介'},
+                {field: 'publish', width: 120, title: '出版社'},
+
                 {field: 'price', width: 80, title: '价格'},
                 {field: 'language', width: 80, title: '语言'},
+
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],

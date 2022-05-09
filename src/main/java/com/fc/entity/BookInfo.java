@@ -1,5 +1,8 @@
 package com.fc.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class BookInfo {
@@ -24,6 +27,17 @@ public class BookInfo {
     private Integer typeId;
 
     private Integer status;
+
+    private Integer counts;
+
+    public Integer getCounts() {
+        return counts;
+    }
+
+    public void setCounts(Integer counts) {
+        this.counts = counts;
+    }
+
 
     public Integer getId() {
         return id;

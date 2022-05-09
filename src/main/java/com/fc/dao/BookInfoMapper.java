@@ -31,4 +31,7 @@ public interface BookInfoMapper {
     int updateByPrimaryKey(BookInfo record);
 
     List<BookInfo> queryBookInfoAll(BookInfo bookInfo);
+
+    List<BookInfo> getBookCountByType();
+
 }

@@ -6,17 +6,17 @@
     <title>统计数据</title>
 </head>
 <body>
-<div class="layuimini-container">
-    <div class="layuimini-min">
-        <div class="layui-col-md12">
-            <div class="layui-card">
-                <div class="layui-card-body">
+<%--<div class="layuimini-container">--%>
+<%--    <div class="layuimini-min">--%>
+<%--        <div class="layui-col-md12">--%>
+<%--            <div class="layui-card" >--%>
+<%--                <div class="layui-card-body">--%>
                     <div id="main" style="width: 100%;min-height:500px"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <script src="${pageContext.request.contextPath}/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>

@@ -97,6 +97,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  <!--删除类型-->
+  <delete id="deleteTypeByIds" parameterType="List">
+    delete from type_info where id in
+    <foreach collection="list" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
   <insert id="insert" parameterType="com.fc.entity.TypeInfo">
     insert into type_info (id, name, remarks
       )
@@ -128,11 +135,28 @@
       </if>
     </trim>
   </insert>
+  <!--类型的添加-->
+  <insert id="addTypeSubmit">
+    insert into type_info (name,remarks)values(#{name},#{remarks})
+  </insert>
   <select id="countByExample" parameterType="com.fc.entity.TypeInfoExample" resultType="java.lang.Long">
     select count(*) from type_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
+  </select>
+  <!--查询全部类型信息-->
+  <select id="queryTypeInfoAll" resultType="com.fc.entity.TypeInfo">
+    select * from type_info
+    <where>
+      <if test="name!=null">
+        and name like '%${name}%'
+      </if>
+    </where>
+  </select>
+  <!--根据id查询类型信息-->
+  <select id="queryTypeInfoById" resultType="com.fc.entity.TypeInfo">
+    select * from type_info where id=#{id}
   </select>
   <update id="updateByExampleSelective" parameterType="map">
     update type_info
@@ -178,4 +202,12 @@
       remarks = #{remarks,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--修改图书类型-->
+  <update id="updateTypeSubmit">
+    update type_info set name=#{name},remarks=#{remarks} where id=#{id}
+  </update>
+  <select id="queryTypeName" resultType="com.fc.entity.TypeInfo">
+    select type.name
+    from type_info type
+  </select>
 </mapper>
