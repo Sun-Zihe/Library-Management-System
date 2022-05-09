@@ -17,4 +17,8 @@ public interface LendReadService {
     void addLendListSubmit(LendList lendList);
 
     Integer updateLendListSubmit(List<String> ids, List<String> bookIds);
+
+    void deleteLendListById(List<String> list, List<String> blist);
+
+    List<LendList> queryLookBookList(Integer readerid, Integer bookid);
 }

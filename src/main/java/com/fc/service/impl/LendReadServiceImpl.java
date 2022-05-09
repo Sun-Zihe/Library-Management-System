@@ -31,10 +31,6 @@ public class LendReadServiceImpl implements LendReadService {
 
         List<LendList> list=lendListMapper.queryLendListAll(info);
 
-        for (LendList ls:list
-             ) {
-            System.out.println(ls.getBacktype());
-        }
 
         PageInfo pageInfo=new PageInfo(list);
         return pageInfo;
@@ -46,10 +42,10 @@ public class LendReadServiceImpl implements LendReadService {
     public void backBook(LendList lendList) {
         LendList list = lendListMapper.selectByPrimaryKey(lendList.getId());
         LendList lend=new LendList();
-        lend.setId(list.getId());
-        lend.setBacktype(list.getBacktype());
+        lend.setId(lendList.getId());
+        lend.setBacktype(lendList.getBacktype());
         lend.setBackdate(new Date());
-        lend.setExceptremarks(list.getExceptremarks());
+        lend.setExceptremarks(lendList.getExceptremarks());
         lend.setBookid(list.getBookid());
         lendListMapper.updateLendListSubmit(lend);
         //判断异常还书 如果是延期或者正常还书，需要更改书的状态
@@ -89,5 +85,26 @@ public class LendReadServiceImpl implements LendReadService {
 
         return affRow;
     }
+
+    //刪除
+    @Override
+    public void deleteLendListById(List<String> list, List<String> blist) {
+            //删除借阅记录
+        for(String id:list){
+            lendListMapper.deleteByPrimaryKey(Integer.parseInt(id));
+        }
+        //更新状态为未借出
+        for(String bid:blist){
+            BookInfo bookInfo=bookInfoMapper.selectByPrimaryKey(Integer.parseInt(bid));
+            bookInfo.setStatus(0);
+            bookInfoMapper.updateByPrimaryKey(bookInfo);
+        }
+    }
+
+    @Override
+    public List<LendList> queryLookBookList(Integer readerId, Integer bookId) {
+        return lendListMapper.queryLookBookList(readerId, bookId);
+    }
+
 
 }

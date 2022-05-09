@@ -22,7 +22,7 @@
                 <div class="layui-form-item layui-form ">
                     借书卡
                     <div class="layui-inline">
-                        <input class="layui-input" name="readerNumber" id="readerNumber" autocomplete="off">
+                        <input class="layui-input" name="readernumber" id="readernumber" autocomplete="off">
                     </div>
                     图书名称
                     <div class="layui-inline">
@@ -126,7 +126,7 @@
             reload: function(){
                 var name = $('#name').val();
                 var readernumber = $('#readernumber').val();
-                var backtype = $('#backtype').val();
+                var backtype = $('#type').val();
                 var status = $('#status').val();
                 //执行重载
                 table.reload('testReload', {
@@ -171,7 +171,7 @@
                 layer.confirm('确定是否删除', function (index) {
                     //调用删除功能
                     //获取记录信息的id集合
-                    deleteInfoByIds(data.id,data.bookId,index);
+                    deleteInfoByIds(data.id,data.bookid,index);
                     layer.close(index);
                 });
             }else if( obj.event === 'bookInfoEvent') {//书的借阅线
@@ -229,7 +229,7 @@
         function getCheackBookId(data){
             var arr=new Array();
             for(var i=0;i<data.length;i++){
-                arr.push(data[i].bookId);
+                arr.push(data[i].bookid);
             }
             //拼接id
             return arr.join(",");

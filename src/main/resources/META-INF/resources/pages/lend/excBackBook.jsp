@@ -25,7 +25,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label required">异常类型</label>
         <div class="layui-input-block">
-            <select name="backType" id="backType" lay-verify="required">
+            <select name="backtype" id="backtype" lay-verify="required">
                 <option value="">请选择</option>
 <%--                <option value="0">正常还书</option>--%>
                 <option value="1">延迟还书</option>

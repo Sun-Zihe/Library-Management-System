@@ -31,8 +31,6 @@ public class LendReadController {
     @Autowired
     private BookInfoService bookInfoService;
 
-//    @Autowired
-//    private BookInfoService bookInfoService;
 
     //页面跳转
     @GetMapping("/lendListIndex")
@@ -42,19 +40,24 @@ public class LendReadController {
 
     @ResponseBody
     @RequestMapping("/lendListAll")
-    public DataInfoVO lendListAll(Integer backType, String readerNumber, String name, Integer status,
+    public DataInfoVO lendListAll(HttpServletRequest request,Integer backtype, String readernumber, String name, Integer status,
                                   @RequestParam(defaultValue = "1")Integer page, @RequestParam(defaultValue = "15")Integer limit){
 
         DataInfoVO vo ;
 
+        String backtype1 = request.getParameter("backtype");
+        String status1 = request.getParameter("status");
         LendList info=new LendList();
-        System.out.println("backType:"+backType);
+        System.out.println("backType:"+backtype1);System.out.println("readernumber:"+readernumber);
+        System.out.println("name:"+name);
+        System.out.println("status:"+status1);
 
-        info.setBacktype(backType);
+
+        info.setBacktype(backtype);
 
         //创建读者对象
         ReaderInfo reader=new ReaderInfo();
-        reader.setReadernumber(readerNumber);
+        reader.setReadernumber(readernumber);
 
         info.setReaderInfo(reader);
 
@@ -127,6 +130,7 @@ public class LendReadController {
     @ResponseBody
     @RequestMapping("/updateLendInfoSubmit")
     public DataInfoVO updateLendInfoSubmit(LendList lendList){
+        System.out.println(lendList);
         lendReadService.backBook(lendList);
         return new DataInfoVO(0,"成功",null,null);
     }
@@ -136,8 +140,10 @@ public class LendReadController {
     @RequestMapping("/backLendListByIds")
     public DataInfoVO backLendListByIds(String ids,String bookIds){
 
+
         List list=Arrays.asList(ids.split(","));//借阅记录的id
         List bookList=Arrays.asList(bookIds.split(","));//图书信息的id
+
         Integer affRow = lendReadService.updateLendListSubmit(list, bookList);
 
         if (affRow>0){
@@ -146,4 +152,32 @@ public class LendReadController {
             return new DataInfoVO(400,"失败",null,null);
         }
     }
+
+
+    //删除记录
+    @ResponseBody
+    @RequestMapping("/deleteLendListByIds")
+    public DataInfoVO deleteLendListByIds(String ids, String bookIds){
+        List list=Arrays.asList(ids.split(","));//借阅记录的id
+        List blist=Arrays.asList(bookIds.split(","));//图书信息的id
+
+        lendReadService.deleteLendListById(list,blist);
+        return new DataInfoVO(0,"成功",null,null);
+    }
+
+    //查阅时间线
+    //判断前端传过来的fled是book还是user
+    @RequestMapping("/queryLookBookList")
+    public String queryLookBookList(String flag,Integer id,Model model){
+        List<LendList> list=null;
+        if(flag.equals("book")){
+            list=lendReadService.queryLookBookList(null,id);
+        }else if (flag.equals("user")){
+            list=lendReadService.queryLookBookList(id,null);
+        }
+        model.addAttribute("info",list);
+        return "lend/lookBookList";
+    }
+
+
 }
