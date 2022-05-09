@@ -6,9 +6,12 @@ import com.fc.vo.DataInfoVO;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class NoticeController {
@@ -48,6 +51,23 @@ public class NoticeController {
         notice.setCreatedate(new Date());
         noticeService.addNotice(notice);
         return new DataInfoVO(0,"添加成功", null, null);
+    }
+
+    //查看详情
+    @GetMapping("/queryNoticeById")
+    public String queryNoticeById(Integer id, Model model){
+        Notice notice = noticeService.queryNoticeById(id);
+        model.addAttribute("info",notice);
+        return "notice/updateNotice";
+    }
+
+    //删除公告
+    @RequestMapping("/deleteNoticeByIds")
+    @ResponseBody
+    public DataInfoVO deleteNoticeByIds(String ids){
+        List<String> list = Arrays.asList(ids.split(","));
+        noticeService.deleteNoticeByIds(list);
+        return new DataInfoVO(0,"删除成功", null, null);
     }
 
 }

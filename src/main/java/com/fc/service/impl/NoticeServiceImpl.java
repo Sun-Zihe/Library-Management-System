@@ -30,4 +30,16 @@ public class NoticeServiceImpl implements NoticeService {
     public void addNotice(Notice notice) {
         noticeMapper.insert(notice);
     }
+
+    @Override
+    public Notice queryNoticeById(Integer id) {
+        return noticeMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void deleteNoticeByIds(List<String> ids) {
+        for (String id : ids){
+            noticeMapper.deleteByPrimaryKey(Integer.parseInt(id));
+        }
+    }
 }
