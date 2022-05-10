@@ -24,10 +24,11 @@ public class NoticeController {
         return "notice/noticeIndexOfBack";
     }
 
-//    @GetMapping("/noticeIndexOfReader")
-//    public String noticeIndexOfReader(){
-//        return "notice/noticeIndexOfReader";
-//    }
+    //读者公告
+    @GetMapping("/noticeIndexOfReader")
+    public String noticeIndexOfReader(){
+        return "notice/noticeIndexOfReader";
+    }
 
     //查询所有公告信息
     @RequestMapping("/noticeAll")

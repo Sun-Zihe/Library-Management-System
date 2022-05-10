@@ -26,5 +26,4 @@ public interface ReaderInfoService {
 
     //删除
     void deleteReaderInfoByIds(List<String> list);
-
 }
