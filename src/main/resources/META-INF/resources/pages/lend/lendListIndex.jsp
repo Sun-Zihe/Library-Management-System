@@ -176,11 +176,11 @@
                 });
             }else if( obj.event === 'bookInfoEvent') {//书的借阅线
                   //获取书的id
-                  var bid=data.bookId;
+                  var bid=data.bookid;
                   queryLookBookList("book",bid);
             }else{//读者借阅线
                 //获取读者的id
-                var rid=data.readerId;
+                var rid=data.readerid;
                 queryLookBookList("user",rid);
             }
         });

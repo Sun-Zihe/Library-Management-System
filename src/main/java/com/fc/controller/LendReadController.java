@@ -179,5 +179,12 @@ public class LendReadController {
         return "lend/lookBookList";
     }
 
+    @RequestMapping("/queryLookBookList2")
+    public String queryLookBookList(HttpServletRequest request,Model model){
+        ReaderInfo readerInfo = (ReaderInfo) request.getSession().getAttribute("user");
+        List<LendList> list = list=lendReadService.queryLookBookList(readerInfo.getId(),null);
+        model.addAttribute("info",list);
+        return "lend/lookBookList";
+    }
 
 }
