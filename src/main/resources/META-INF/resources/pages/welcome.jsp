@@ -49,7 +49,7 @@
                             <c:forEach var="notice" items="${noticeList}">
                                 <div class="layuimini-notice">
                                     <div class="layuimini-notice-title">${notice.topic}</div>
-                                    <div class="layuimini-notice-extra"><fmt:formatDate value="${notice.createDate}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+                                    <div class="layuimini-notice-extra"><fmt:formatDate value="${notice.createdate}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
                                     <div class="layuimini-notice-content layui-hide">
                                         ${notice.content}
                                     </div>

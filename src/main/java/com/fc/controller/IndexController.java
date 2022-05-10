@@ -31,12 +31,13 @@ public class IndexController {
      * @return
      */
     @GetMapping("/welcome")
-    public String welcome(ModelAndView mv){
+    public String welcome(Model md){
         //提供公告信息
         PageInfo<Notice> pageInfo =  noticeService.queryAllNotice(null,1,5);
         if (pageInfo!=null){
             List<Notice> noticeList = pageInfo.getList();
-            mv.addObject("noticeList",noticeList);
+
+            md.addAttribute("noticeList",noticeList);
         }
         return "welcome";
     }

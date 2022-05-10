@@ -52,4 +52,15 @@ public class Notice {
     public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
+
+    @Override
+    public String toString() {
+        return "Notice{" +
+                "id=" + id +
+                ", topic='" + topic + '\'' +
+                ", content='" + content + '\'' +
+                ", author='" + author + '\'' +
+                ", createdate=" + createdate +
+                '}';
+    }
 }
