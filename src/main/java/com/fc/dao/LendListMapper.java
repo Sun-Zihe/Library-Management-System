@@ -36,4 +36,6 @@ public interface LendListMapper {
 
     //正常还书
     void updateLendListSubmit(LendList lend);
+
+    List<LendList> queryLookBookList(@Param("rid") Integer readerId, @Param("bid") Integer bookId);
 }

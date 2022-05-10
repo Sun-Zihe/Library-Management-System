@@ -213,6 +213,25 @@
     </where>
     order by lend.lendDate desc
   </select>
+    <select id="queryLookBookList" resultType="com.fc.entity.LendList">
+      SELECT
+      lend.*,
+      reader.readerNumber,
+      bookInfo.name  AS  bookName,
+      reader.realName AS realName
+      FROM
+      lend_list lend
+      LEFT JOIN reader_info reader ON reader.id = lend.readerId
+      LEFT JOIN book_info bookInfo ON bookInfo.id = lend.bookId
+      <where>
+
+        <if test="bid!=null">and bookInfo.id=#{bid} </if>
+
+        <if test="rid!=null">and reader.id=#{rid} </if>
+
+      </where>
+      order by lend.id desc
+    </select>
     <update id="updateByExampleSelective" parameterType="map">
     update lend_list
     <set>

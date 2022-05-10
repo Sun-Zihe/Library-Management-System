@@ -165,7 +165,7 @@ public class LendListExample {
             return (Criteria) this;
         }
 
-        public Criteria andBookidIsNull() {
+        public Criteria andbookIdIsNull() {
             addCriterion("bookId is null");
             return (Criteria) this;
         }

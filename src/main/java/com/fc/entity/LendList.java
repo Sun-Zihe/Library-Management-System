@@ -13,10 +13,10 @@ public class LendList {
     private Integer readerid;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")//接收页面输入的时间，将其格式化
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")//后端传的日期格式化
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date lenddate;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")//接收页面输入的时间，将其格式化
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")//后端传的日期格式化
     private Date backdate;
 

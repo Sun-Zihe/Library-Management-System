@@ -53,4 +53,14 @@ public class Notice {
         this.createdate = createdate;
     }
 
+    @Override
+    public String toString() {
+        return "Notice{" +
+                "id=" + id +
+                ", topic='" + topic + '\'' +
+                ", content='" + content + '\'' +
+                ", author='" + author + '\'' +
+                ", createdate=" + createdate +
+                '}';
+    }
 }
