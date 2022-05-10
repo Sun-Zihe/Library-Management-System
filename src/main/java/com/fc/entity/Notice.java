@@ -52,4 +52,5 @@ public class Notice {
     public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
+
 }

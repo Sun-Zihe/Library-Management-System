@@ -1,5 +1,6 @@
 package com.fc.dao;
 
+import com.fc.entity.BookInfo;
 import com.fc.entity.ReaderInfo;
 import com.fc.entity.ReaderInfoExample;
 import java.util.List;

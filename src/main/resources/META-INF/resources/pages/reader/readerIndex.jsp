@@ -23,9 +23,9 @@
 
         <div class="demoTable">
             <div class="layui-form-item layui-form ">
-                图书卡号：
+                读者卡号：
                 <div class="layui-inline">
-                    <input class="layui-input" name="readerNumber" id="readerNumber" autocomplete="off">
+                    <input class="layui-input" name="readernumber" id="readernumber" autocomplete="off">
                 </div>
                 用户名：
                 <div class="layui-inline">
@@ -76,12 +76,12 @@
             cols: [[
                 {type: "checkbox", width: 50},
                 //{field: 'id', width: 100, title: 'ID', sort: true},
-                {field: 'readerNumber', width: 150, title: '读者卡号'},
+                {field: 'readernumber', width: 150, title: '读者卡号'},
                 {field: 'username', width: 100, title: '用户名'},
-                {field: 'realName', width: 100, title: '真实姓名'},
+                {field: 'realname', width: 100, title: '真实姓名'},
                 {field: 'sex', width: 80, title: '性别'},
                 {field: 'tel', width: 150, title: '电话'},
-                {templet:"<div>{{layui.util.toDateString(d.registerDate,'yyyy-MM-dd HH:mm:ss')}}</div>", width: 200, title: '办卡时间'},
+                {templet:"<div>{{layui.util.toDateString(d.registerdate,'yyyy-MM-dd HH:mm:ss')}}</div>", width: 200, title: '办卡时间'},
                 {templet: '<div>{{d.email}}</div>', width: 150, title: '邮箱'},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
@@ -94,7 +94,7 @@
 
         var $ = layui.$, active = {
             reload: function(){
-                var readerNumber = $('#readerNumber').val();
+                var readernumber = $('#readernumber').val();
                 var username = $('#username').val();
                 var tel = $('#tel').val();
                 console.log(name)
@@ -104,7 +104,7 @@
                         curr: 1 //重新从第 1 页开始
                     }
                     ,where: {
-                        readerNumber: readerNumber,
+                        readernumber: readernumber,
                         username:username,
                         tel:tel
                     }
