@@ -31,4 +31,6 @@ public interface AdminMapper {
     int updateByPrimaryKey(Admin record);
 
     Admin queryUserByNameAndPassword(@Param("username") String username,@Param("password") String password);
+
+    List<Admin> queryAdminInfoAll(Admin admin);
 }

@@ -26,7 +26,7 @@
                 </div>
                 管理员类型：
                 <div class="layui-inline">
-                    <select id="adminType" name="adminType" class="layui-input">
+                    <select id="admintype" name="admintype" class="layui-input">
                         <option value="">请选择</option>
                         <option value="0">普通管理员</option>
                         <option value="1">高级管理员</option>
@@ -73,8 +73,8 @@
                 {type: "checkbox", width: 50},
                 //{field: 'id', width: 100, title: 'ID', sort: true},
                 {field: 'username', width: 150, title: '用户名'},
-                {field: 'adminType', width: 200, title: '管理员类型',templet:function (res) {
-                        if (res.adminType == '0'){
+                {field: 'admintype', width: 200, title: '管理员类型',templet:function (res) {
+                        if (res.admintype == '0'){
                             return '<span class="layui-btn layui-btn-normal layui-btn-xs">普通管理员</span>';
                         }else{
                             return '<span class="layui-btn layui-btn-normal layui-btn-xs" style="background-color: orangered;">高级管理员</span>';
@@ -92,7 +92,7 @@
         var $ = layui.$, active = {
             reload: function(){
                 var username = $('#username').val();
-                var adminType = $('#adminType').val();
+                var admintype = $('#admintype').val();
                 console.log(name)
                 //执行重载
                 table.reload('testReload', {
@@ -101,7 +101,7 @@
                     }
                     ,where: {
                         username: username,
-                        adminType:adminType
+                        admintype:admintype
                     }
                 }, 'data');
             }

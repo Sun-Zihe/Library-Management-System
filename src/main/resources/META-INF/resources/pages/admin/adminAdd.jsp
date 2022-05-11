@@ -34,7 +34,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label required">管理员类型</label>
         <div class="layui-input-block">
-            <select class="layui-input" name="adminType" id="adminType">
+            <select class="layui-input" name="admintype" id="admintype">
                 <option value=""></option>
                 <option value="0">普通管理员</option>
                 <option value="1">高级管理员</option>
