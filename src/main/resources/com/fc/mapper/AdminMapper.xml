@@ -144,6 +144,17 @@
     <select id="queryUserByNameAndPassword" resultType="com.fc.entity.Admin">
       select * from admin where username=#{username} and password=#{password}
     </select>
+    <select id="queryAdminInfoAll" resultType="com.fc.entity.Admin">
+      SELECT * from admin
+      <where>
+        <if test="username!=null">
+          and username like '%${username}%'
+        </if>
+        <if test="admintype!=null">
+          and adminType like '%${admintype}%'
+        </if>
+      </where>
+    </select>
     <update id="updateByExampleSelective" parameterType="map">
     update admin
     <set>
