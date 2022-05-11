@@ -3,6 +3,7 @@ package com.fc.controller;
 import com.fc.entity.Admin;
 import com.fc.entity.BookInfo;
 import com.fc.entity.ReaderInfo;
+import com.fc.service.AdminService;
 import com.fc.service.ReaderInfoService;
 import com.fc.vo.DataInfoVO;
 import com.github.pagehelper.PageInfo;
@@ -23,6 +24,8 @@ public class ReaderInfoController {
     @Autowired
     private ReaderInfoService readerInfoService;
 
+    @Autowired
+    private AdminService adminService;
     //读者管理页面跳转
     @GetMapping("/readerIndex")
     public String readerIndex () {
@@ -87,4 +90,34 @@ public class ReaderInfoController {
         return new DataInfoVO(0, "删除成功", null, null);
     }
 
+    //修改密码
+    @RequestMapping("/updatePwdSubmit2")
+    @ResponseBody
+    public DataInfoVO updatePwdSubmit(HttpServletRequest request, String oldPwd, String newPwd){
+        HttpSession session = request.getSession();
+        if(session.getAttribute("type")=="admin"){
+            //管理员
+            Admin admin = (Admin)session.getAttribute("user");
+            Admin admin1 = (Admin)adminService.queryAdminById(admin.getId());
+            if (!oldPwd.equals(admin1.getPassword())){
+                return new DataInfoVO(400, "新密码输入错误", null, null);
+            }else{
+                admin1.setPassword(newPwd);
+                adminService.updateAdminSubmit(admin1);//数据库修改
+                return new DataInfoVO(0,"修改成功",null,null);
+            }
+        }else{
+            //读者
+            ReaderInfo readerInfo = (ReaderInfo) session.getAttribute("user");
+            ReaderInfo readerInfo1 = readerInfoService.queryReaderInfoById(readerInfo.getId());//根据id查询对象
+            if (!oldPwd.equals(readerInfo1.getPassword())){
+                return new DataInfoVO(400, "输入旧密码错误", null, null);
+            }else{
+                readerInfo1.setPassword(newPwd);
+                readerInfoService.updateReaderInfoSubmit(readerInfo1);//数据库修改
+                return new DataInfoVO(0,"修改成功",null,null);
+            }
+        }
+
+    }
 }

@@ -42,6 +42,12 @@ public class IndexController {
         return "welcome";
     }
 
-
-
+    /**
+     * 页面的修改密码
+     * @return
+     */
+    @GetMapping("/updatePassword")
+    public String updatePwd(){
+        return "pwdUpdate/updatePwd";
+    }
 }

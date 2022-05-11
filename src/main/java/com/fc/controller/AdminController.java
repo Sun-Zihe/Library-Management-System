@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
 
@@ -58,6 +60,7 @@ public class AdminController {
     @RequestMapping("/updatePwdSubmit")
     @ResponseBody
     public DataInfoVO updatePwdSubmit(Integer id, String oldPwd, String newPwd) {
+
         //根据id查询对象
         Admin admin = adminService.queryAdminById(id);
 
@@ -65,6 +68,7 @@ public class AdminController {
             return new DataInfoVO(400, "失败", null, null);
 
         } else {
+
             admin.setPassword(newPwd);
 
             adminService.updateAdminSubmit(admin);
